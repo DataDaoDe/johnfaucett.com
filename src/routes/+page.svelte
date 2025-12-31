@@ -5,4 +5,4 @@
 
 <Header fontColor="white" />
 
-<div class="fullimage-1"/>
+<div class="fullimage-1"></div>
