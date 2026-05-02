@@ -1,0 +1,55 @@
+@import "tailwindcss";
+@variant dark (&:where(.dark, .dark *));
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Courier+Prime&display=swap');
+
+@theme {
+  /* Fonts */
+  --font-display: 'Special Elite', monospace;
+  --font-body: 'EB Garamond', Georgia, serif;
+  --font-mono: 'Courier Prime', 'Courier New', monospace;
+
+  /* Light mode */
+  --color-paper: #faf8f4;
+  --color-ink: #1a1814;
+  --color-ink-muted: #6b6760;
+  --color-ink-faint: #c4bfb8;
+
+  /* Dark mode */
+  --color-paper-dark: #0f0e0c;
+  --color-ink-dark: #e8e4dc;
+  --color-ink-dark-muted: #908c84;
+  --color-ink-dark-faint: #3a3830;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-body);
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-size: 17px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  html.dark {
+    background-color: var(--color-paper-dark);
+    color: var(--color-ink-dark);
+  }
+}
+
+/* KaTeX theme integration */
+@layer base {
+  .katex {
+    font-size: 1.1em;
+  }
+
+  .katex-display {
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0.5rem 0;
+  }
+
+  html.dark .katex {
+    color: var(--color-ink-dark);
+  }
+}
