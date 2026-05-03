@@ -2,22 +2,25 @@
   import katex from 'katex';
 
   interface Props {
-    expression: string;
+    expression?: string;
+    e?: string;
     display?: boolean;
     class?: string;
   }
 
-  let { expression, display = false, class: className = '' }: Props = $props();
+  let { expression, e, display = false, class: className = '' }: Props = $props();
+
+  const expr = $derived(expression ?? e ?? '');
 
   let rendered = $derived(() => {
     try {
-      return katex.renderToString(expression, {
+      return katex.renderToString(expr, {
         displayMode: display,
         throwOnError: false,
         strict: false,
       });
-    } catch (e) {
-      return `<span style="color: red">KaTeX error: ${e}</span>`;
+    } catch (err) {
+      return `<span style="color: red">KaTeX error: ${err}</span>`;
     }
   });
 </script>
@@ -26,7 +29,7 @@
   <div
     class="my-8 overflow-x-auto text-ink dark:text-ink-dark {className}"
     role="math"
-    aria-label={expression}
+    aria-label={expr}
   >
     {@html rendered()}
   </div>
@@ -34,7 +37,7 @@
   <span
     class="text-ink dark:text-ink-dark {className}"
     role="math"
-    aria-label={expression}
+    aria-label={expr}
   >
     {@html rendered()}
   </span>

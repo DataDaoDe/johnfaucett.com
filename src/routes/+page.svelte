@@ -18,7 +18,7 @@
 
   <div class="grid grid-cols-2 border border-ink-faint/40 dark:border-ink-dark-faint/40 mb-24">
     {#each [
-      { id: 1, href: '/articles',  label: 'Articles',  section: '§ 01', desc: 'Essays, notes, and ideas in long form' },
+      { id: 1, href: '/writing',  label: 'Writing',  section: '§ 01', desc: 'Essays, notes, ideas, and everything in between' },
       { id: 2, href: '/research',  label: 'Research',  section: '§ 02', desc: 'Mathematics papers and formal work' },
       { id: 3, href: '/projects',  label: 'Projects',  section: '§ 03', desc: 'Things I am building' },
       { id: 4, href: '/youtube',   label: 'YouTube',   section: '§ 04', desc: 'Videos and visual mathematics' },

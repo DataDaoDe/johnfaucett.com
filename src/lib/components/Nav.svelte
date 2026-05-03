@@ -3,10 +3,10 @@
   import { page } from '$app/state';
 
   const links = [
-    { id: 1, href: '/articles', label: 'articles' },
+    { id: 1, href: '/writing',  label: 'writing' },
     { id: 2, href: '/research', label: 'research' },
     { id: 3, href: '/projects', label: 'projects' },
-    { id: 4, href: '/youtube', label: 'youtube' },
+    { id: 4, href: '/youtube',  label: 'youtube' },
   ];
 </script>
 
