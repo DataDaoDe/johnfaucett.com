@@ -1,45 +1,113 @@
 <script lang="ts">
-  import Math from '$lib/components/Math.svelte';
-  import Prose from '$lib/components/Prose.svelte';
-  import Callout from '$lib/components/Callout.svelte';
-	import { tex } from '$lib/utils';
+  import { research } from '$lib/data/research';
+  import type { ResearchEntry } from '$lib/data/research';
+
+  const ABSTRACT_LIMIT = 280;
+
+  let expanded = $state<Set<number>>(new Set());
+
+  function toggle(index: number) {
+    const next = new Set(expanded);
+    if (next.has(index)) {
+      next.delete(index);
+    } else {
+      next.add(index);
+    }
+    expanded = next;
+  }
+
+  function isLong(entry: ResearchEntry): boolean {
+    return entry.abstract.length > ABSTRACT_LIMIT;
+  }
+
+  function displayAbstract(entry: ResearchEntry, index: number): string {
+    if (!isLong(entry) || expanded.has(index)) return entry.abstract;
+    return entry.abstract.slice(0, ABSTRACT_LIMIT).trimEnd() + '…';
+  }
 </script>
 
 <main class="max-w-2xl mx-auto px-8 py-16">
+
   <h1 class="font-display text-4xl text-ink dark:text-ink-dark mb-2">Research</h1>
   <p class="font-mono text-xs tracking-widest uppercase text-ink-faint dark:text-ink-dark-faint mb-16">§ 02</p>
 
-  <Prose>
-    <p>
-      One of the most beautiful results in analysis is the closed form
-      of the Gaussian integral.
-    </p>
-  </Prose>
+  <ul class="list-none p-0 m-0 divide-y divide-ink-faint/30 dark:divide-ink-dark-faint/30">
+    {#each research as entry, i (i)}
+      <li class="py-10">
 
-  <Callout type="definition" title="The Gaussian Integral">
-    Let <Math expression={tex`I = \int_{-\infty}^{\infty} e^{-x^2} dx`} />. We claim that <Math expression={tex`I = \sqrt{\pi}`} />.
-  </Callout>
+        <!-- Title + year -->
+        <div class="flex items-baseline justify-between gap-4 mb-3">
+          <h2 class="font-display text-2xl text-ink dark:text-ink-dark leading-snug">
+            {entry.title}
+          </h2>
+          <span class="font-mono text-xs text-ink-faint dark:text-ink-dark-faint shrink-0">
+            {entry.year}
+          </span>
+        </div>
 
-  <Callout type="theorem" number="1.3" title="Gaussian Integral">
-    <Math expression={tex`\int_{-\infty}^{\infty} e^{-x^2} dx = \sqrt{\pi}`} display />
-  </Callout>
+        <!-- Status + coauthors -->
+        <div class="flex items-center gap-3 mb-5 flex-wrap">
+          <span class="font-mono text-[10px] tracking-widest uppercase text-ink-faint dark:text-ink-dark-faint">
+            {entry.status}
+          </span>
+          {#if entry.coauthors && entry.coauthors.length > 0}
+            <span class="font-mono text-[10px] text-ink-faint dark:text-ink-dark-faint">·</span>
+            <span class="font-body italic text-sm text-ink-muted dark:text-ink-dark-muted">
+              with {entry.coauthors.join(', ')}
+            </span>
+          {/if}
+        </div>
 
-  <Callout type="proof">
-    Square the integral and convert to polar coordinates.
-    <Math expression={tex`I^2 = \int_0^{2\pi}\int_0^{\infty} e^{-r^2} r\, dr\, d\theta = \pi`} display />
-    Taking the positive square root gives <Math expression={tex`I = \sqrt{\pi}`} />.
-  </Callout>
+        <!-- Abstract -->
+        <p class="font-body text-base text-ink-muted dark:text-ink-dark-muted leading-relaxed mb-3">
+          {displayAbstract(entry, i)}
+        </p>
 
-  <Callout type="remark">
-    This result is fundamental to the normalization of the Gaussian distribution.
-  </Callout>
+        {#if isLong(entry)}
+          <button
+            onclick={() => toggle(i)}
+            class="font-mono text-[10px] tracking-widest lowercase text-ink-faint dark:text-ink-dark-faint hover:text-ink dark:hover:text-ink-dark transition-colors mb-5 cursor-pointer"
+          >
+            {expanded.has(i) ? '— read less' : '+ read more'}
+          </button>
+        {/if}
 
-  <Callout type="example" title="Normal Distribution">
-    The probability density <Math expression={tex`f(x) = \frac{1}{\sqrt{2\pi}} e^{-x^2/2}`} /> integrates to 1
-    over <Math expression={tex`\mathbb{R}`} /> by the Gaussian integral.
-  </Callout>
+        <!-- Links -->
+        <div class="flex items-center gap-6 mt-4">
+          {#if entry.github}
+            <a
+              href={entry.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="font-mono text-xs lowercase tracking-widest text-ink-muted dark:text-ink-dark-muted border-b border-ink-faint dark:border-ink-dark-faint hover:text-ink dark:hover:text-ink-dark hover:border-ink dark:hover:border-ink-dark transition-colors pb-px"
+            >
+              github ↗
+            </a>
+          {/if}
+          {#if entry.arxiv}
+            <a
+              href={entry.arxiv}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="font-mono text-xs lowercase tracking-widest text-ink-muted dark:text-ink-dark-muted border-b border-ink-faint dark:border-ink-dark-faint hover:text-ink dark:hover:text-ink-dark hover:border-ink dark:hover:border-ink-dark transition-colors pb-px"
+            >
+              arxiv ↗
+            </a>
+          {/if}
+          {#if entry.pdf}
+            <a
+              href={entry.pdf}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="font-mono text-xs lowercase tracking-widest text-ink-muted dark:text-ink-dark-muted border-b border-ink-faint dark:border-ink-dark-faint hover:text-ink dark:hover:text-ink-dark hover:border-ink dark:hover:border-ink-dark transition-colors pb-px"
+            >
+              pdf ↗
+            </a>
+          {/if}
+        </div>
 
-  <Callout type="corollary">
-    <Math expression={tex`\int_{-\infty}^{\infty} e^{-x^2/2} dx = \sqrt{2\pi}`} display />
-  </Callout>
+      </li>
+    {/each}
+  </ul>
+
 </main>
