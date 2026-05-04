@@ -15,31 +15,29 @@
 
 <Prose>
   <p>
-    There is something magical about the act of building — not the finished
-    object, but the process itself. The moment when a thing that did not exist
-    begins to exist.
+    There is something magical about the act of building - not the finished product sitting on a shelf in a store but the process itself. 
+    The moment when a thing that did not exist begins to exist.
   </p>
 
   <h2>The Blank Page</h2>
 
-  <p>Every build begins with nothing. This is both the terror and the invitation.</p>
-  <p>It is the terror of a blank page and the excitement of what it may become.</p>
+  <p>Every build begins with nothing. This is simultaneously a terror and an invitation.</p>
+  <p>It is the terror of the man in a canoo who is tipping over the waterfall and the excitement of the adventurer for what wonders may be found below.</p>
 
   <blockquote>
-    A sculptor finds his statue already waiting in the marble. A poet reads off the lips of his muse, but the builder
-    will look in vain for a foreplan to read from.
+    A poet reads words off the lips of the muses. A sculptor peels back the stone to reveal the statue beneath. If there are whispering muses or hidden blueprints, they are rarely heard by the builder whose craft is the steady rap of his hammer, day in, day out.
   </blockquote>
 
   <h2>What Gets Made</h2>
 
   <p>
     Sometimes, oftentimes what gets made is not what was planned. The material pushes back.
-    The idea resists its your execution. Sometimes you need to let it run on its own.
+    The idea resists your execution. Sometimes you need to let it run free.
   </p>
 
   <p>
-    That resistance is not failure. It is a conversation between a newborn, bursting with life,
-    and the calluses of the craftsman. 
+    Resistance is not failure. It is a conversation between a newborn, bursting with life, and the calluses of the craftsman.
   </p>
-  <p>Often the most interesting work lives in the pauses of that dialog.</p>
+
+  <p>Interesting work lives in the pauses of that dialog.</p>
 </Prose>
