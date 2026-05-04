@@ -16,13 +16,14 @@
 </script>
 
 <main class="max-w-2xl mx-auto px-8 py-16">
-  <header class="mb-12 pb-8 border-b border-ink-faint/40 dark:border-ink-dark-faint/40">
+
+  <header class="mb-12 pb-8 border-b border-ink-faint dark:border-ink-dark-faint">
     <div class="flex items-center gap-3 mb-6">
-      <span class="font-mono text-[10px] tracking-widest uppercase text-ink-faint dark:text-ink-dark-faint">
+      <span class="font-mono text-[10px] tracking-widest uppercase text-ink-muted dark:text-ink-dark-muted">
         {metadata.type}
       </span>
       {#if metadata.tags && metadata.tags.length > 0}
-        <span class="font-mono text-[10px] text-ink-faint dark:text-ink-dark-faint">·</span>
+        <span class="font-mono text-[10px] text-ink-muted dark:text-ink-dark-muted">·</span>
         {#each metadata.tags as tag (tag)}
           <span class="font-mono text-[10px] tracking-wide text-ink-muted dark:text-ink-dark-muted">
             {tag}
@@ -42,11 +43,11 @@
     {/if}
 
     <div class="flex items-center justify-between">
-      <span class="font-mono text-xs text-ink-faint dark:text-ink-dark-faint tracking-wide">
+      <span class="font-mono text-xs text-ink-muted dark:text-ink-dark-muted tracking-wide">
         {formatDate(metadata.date)}
       </span>
       {#if metadata.type === 'series-part' && metadata.series && metadata.series_part}
-        <span class="font-mono text-xs text-ink-faint dark:text-ink-dark-faint tracking-widest uppercase">
+        <span class="font-mono text-xs text-ink-muted dark:text-ink-dark-muted tracking-widest uppercase">
           part {metadata.series_part}
         </span>
       {/if}
@@ -57,7 +58,7 @@
     <Content />
   </Prose>
 
-  <footer class="mt-16 pt-8 border-t border-ink-faint/40 dark:border-ink-dark-faint/40 flex justify-between items-center">
+  <footer class="mt-16 pt-8 border-t border-ink-faint dark:border-ink-dark-faint flex justify-between items-center">
     <a
       href="/writing"
       class="font-mono text-xs tracking-widest lowercase text-ink-muted dark:text-ink-dark-muted hover:text-ink dark:hover:text-ink-dark transition-colors"

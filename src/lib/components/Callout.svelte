@@ -3,7 +3,7 @@
 
   type CalloutType = 'definition' | 'theorem' | 'proof' | 'remark' | 'example' | 'lemma' | 'corollary';
 
-  interface CalloutProps {
+  interface Props {
     type: CalloutType;
     number?: string;
     title?: string;
@@ -11,7 +11,7 @@
     class?: string;
   }
 
-  let { type, number, title, children, class: className = '' }: CalloutProps = $props();
+  let { type, number, title, children, class: className = '' }: Props = $props();
 
   const labels: Record<CalloutType, string> = {
     definition: 'Definition',
@@ -34,7 +34,7 @@
   };
 </script>
 
-<div class="callout my-8 {className}">
+<div class="callout {type} {className}">
   <span class="label">
     {labels[type]}{number ? ` ${number}` : ''}{title ? ` (${title})` : ''}.
   </span>
@@ -50,8 +50,10 @@
   .callout {
     margin: 2.5rem 0;
     font-family: var(--font-body);
+    font-size: 1.05rem;
     line-height: 1.8;
     color: var(--color-ink);
+    position: relative;
   }
 
   :global(html.dark) .callout {
@@ -74,11 +76,6 @@
 
   .body.italic {
     font-style: italic;
-  }
-
-  /* proof QED pushes to right margin */
-  .callout {
-    position: relative;
   }
 
   .qed {

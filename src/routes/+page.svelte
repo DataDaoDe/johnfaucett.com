@@ -11,25 +11,25 @@
       Builder &amp; artist.<br />
       Mathematics, ideas, and the things I make.
     </p>
-    <span class="font-mono text-xs tracking-widest uppercase dark:text-ink-dark-faint border-t border-ink-faint/40 dark:border-ink-dark-faint/40 pt-4 inline-block">
+    <span class="font-mono text-xs tracking-widest uppercase text-ink-muted dark:text-ink-dark-muted border-t border-ink-faint dark:border-ink-dark-faint pt-4 inline-block">
       programmer · artist · explorer
     </span>
   </section>
 
-  <div class="grid grid-cols-2 border border-ink-faint/40 dark:border-ink-dark-faint/40 mb-24">
+  <div class="grid grid-cols-2 border border-ink-faint dark:border-ink-dark-faint mb-24">
     {#each [
       { id: 1, href: '/writing',  label: 'Writing',  section: '§ 01', desc: 'Essays, notes, ideas, and everything in between' },
-      { id: 2, href: '/research',  label: 'Research',  section: '§ 02', desc: 'Mathematics papers and formal work' },
-      { id: 3, href: '/projects',  label: 'Projects',  section: '§ 03', desc: 'Things I am building' },
-      { id: 4, href: '/youtube',   label: 'YouTube',   section: '§ 04', desc: 'Videos and visual mathematics' },
+      { id: 2, href: '/research', label: 'Research',  section: '§ 02', desc: 'Mathematics papers and formal work' },
+      { id: 3, href: '/projects', label: 'Projects',  section: '§ 03', desc: 'Things I am building' },
+      { id: 4, href: '/youtube',  label: 'YouTube',   section: '§ 04', desc: 'Videos and visual mathematics' },
     ] as card (card.id)}
       <a
         href={card.href}
-        class="block p-7 border-ink-faint/40 dark:border-ink-dark-faint/40 hover:bg-ink-faint/20 dark:hover:bg-ink-dark-faint/20 transition-colors
-          {card.id === 1 || card.id === 2 ? 'border-b' : ''}
-          {card.id === 1 || card.id === 3 ? 'border-r' : ''}"
+        class="block p-7 hover:bg-ink-faint/10 dark:hover:bg-ink-dark-faint/10 transition-colors
+          {card.id === 1 || card.id === 2 ? 'border-b border-ink-faint dark:border-ink-dark-faint' : ''}
+          {card.id === 1 || card.id === 3 ? 'border-r border-ink-faint dark:border-ink-dark-faint' : ''}"
       >
-        <span class="font-mono text-[10px] tracking-widest uppercase dark:text-ink-dark-faint mb-2 block">
+        <span class="font-mono text-[10px] tracking-widest uppercase text-ink-muted dark:text-ink-dark-muted mb-2 block">
           {card.section}
         </span>
         <span class="font-display text-xl text-ink dark:text-ink-dark block mb-1">

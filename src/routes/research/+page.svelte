@@ -29,50 +29,45 @@
 <main class="max-w-2xl mx-auto px-8 py-16">
 
   <h1 class="font-display text-4xl text-ink dark:text-ink-dark mb-2">Research</h1>
-  <p class="font-mono text-xs tracking-widest uppercase text-ink-faint dark:text-ink-dark-faint mb-16">§ 02</p>
+  <p class="font-mono text-xs tracking-widest uppercase text-ink-muted dark:text-ink-dark-muted mb-16">§ 02</p>
 
-  <ul class="list-none p-0 m-0 divide-y divide-ink-faint/30 dark:divide-ink-dark-faint/30">
+  <ul class="list-none p-0 m-0 divide-y divide-ink-faint dark:divide-ink-dark-faint">
     {#each research as entry, i (i)}
       <li class="py-10">
-
-        <!-- Title + year -->
         <div class="flex items-baseline justify-between gap-4 mb-3">
           <h2 class="font-display text-2xl text-ink dark:text-ink-dark leading-snug">
             {entry.title}
           </h2>
-          <span class="font-mono text-xs text-ink-faint dark:text-ink-dark-faint shrink-0">
+          <span class="font-mono text-xs text-ink-muted dark:text-ink-dark-muted shrink-0">
             {entry.year}
           </span>
         </div>
 
-        <!-- Status + coauthors -->
         <div class="flex items-center gap-3 mb-5 flex-wrap">
-          <span class="font-mono text-[10px] tracking-widest uppercase text-ink-faint dark:text-ink-dark-faint">
+          <span class="font-mono text-[10px] tracking-widest uppercase text-ink-muted dark:text-ink-dark-muted">
             {entry.status}
           </span>
           {#if entry.coauthors && entry.coauthors.length > 0}
-            <span class="font-mono text-[10px] text-ink-faint dark:text-ink-dark-faint">·</span>
+            <span class="font-mono text-[10px] text-ink-muted dark:text-ink-dark-muted">·</span>
             <span class="font-body italic text-sm text-ink-muted dark:text-ink-dark-muted">
               with {entry.coauthors.join(', ')}
             </span>
           {/if}
         </div>
 
-        <!-- Abstract -->
-        <p class="font-body text-base text-ink-muted dark:text-ink-dark-muted leading-relaxed mb-3">
+        <p class="font-body text-base text-ink-muted dark:text-ink-dark-muted leading-relaxed mb-1">
           {displayAbstract(entry, i)}
         </p>
 
         {#if isLong(entry)}
           <button
             onclick={() => toggle(i)}
-            class="font-mono text-[10px] tracking-widest lowercase text-ink-faint dark:text-ink-dark-faint hover:text-ink dark:hover:text-ink-dark transition-colors mb-5 cursor-pointer"
+            class="font-mono text-[10px] tracking-widest lowercase text-ink-muted dark:text-ink-dark-muted hover:text-ink dark:hover:text-ink-dark transition-colors mb-5 cursor-pointer"
           >
             {expanded.has(i) ? '— read less' : '+ read more'}
           </button>
         {/if}
 
-        <!-- Links -->
         <div class="flex items-center gap-6 mt-4">
           {#if entry.github}
             <a

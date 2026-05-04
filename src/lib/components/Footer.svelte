@@ -10,14 +10,14 @@
   );
 </script>
 
-<footer class="border-t border-ink-faint/40 dark:border-ink-dark-faint/40 mt-auto">
+<footer class="border-t border-ink-faint dark:border-ink-dark-faint mt-auto">
   <div class="max-w-2xl mx-auto px-8 py-6 flex justify-between items-center">
-    <span class="font-mono text-xs tracking-widest dark:text-ink-dark-faint">
+    <span class="font-mono text-xs tracking-widest text-ink-muted dark:text-ink-dark-muted">
       © {new Date().getFullYear()} John Faucett
     </span>
     <button
       onclick={resetTheme}
-      class="font-mono text-xs tracking-widest lowercase dark:text-ink-dark-faint hover:text-ink-muted dark:hover:text-ink-dark-muted transition-colors cursor-pointer"
+      class="font-mono text-xs tracking-widest lowercase text-ink-muted dark:text-ink-dark-muted hover:text-ink dark:hover:text-ink-dark transition-colors cursor-pointer"
     >
       {systemLabel}
     </button>

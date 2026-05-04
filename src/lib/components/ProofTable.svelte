@@ -110,7 +110,7 @@
     font-family: var(--font-mono);
     font-size: 0.72rem;
     letter-spacing: 0.05em;
-    color: var(--color-ink-faint);
+    color: var(--color-ink-muted);
     white-space: nowrap;
     width: 2.5rem;
     padding-left: 0;
@@ -118,7 +118,7 @@
   }
 
   :global(html.dark) td.label {
-    color: var(--color-ink-dark-faint);
+    color: var(--color-ink-dark-muted);
   }
 
   td.expr {

@@ -1,5 +1,5 @@
 <script lang="ts">
-  interface FigureProps {
+  interface Props {
     src: string;
     alt: string;
     caption?: string;
@@ -7,18 +7,18 @@
     class?: string;
   }
 
-  let { src, alt, caption, fullwidth = false, class: className = '' }: FigureProps = $props();
+  let { src, alt, caption, fullwidth = false, class: className = '' }: Props = $props();
 </script>
 
 <figure class="my-10 {fullwidth ? 'fullwidth' : ''} {className}">
   <img
     {src}
     {alt}
-    class="w-full block border border-ink-faint/40 dark:border-ink-dark-faint/40"
+    class="w-full block border border-ink-faint dark:border-ink-dark-faint"
   />
   {#if caption}
     <figcaption class="mt-3 font-mono text-xs tracking-wide text-ink-muted dark:text-ink-dark-muted leading-relaxed">
-      <span class="text-ink-faint dark:text-ink-dark-faint mr-2">Fig.</span>{caption}
+      <span class="text-ink-muted dark:text-ink-dark-muted mr-2">Fig.</span>{caption}
     </figcaption>
   {/if}
 </figure>

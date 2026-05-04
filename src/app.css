@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @variant dark (&:where(.dark, .dark *));
+
 @import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Courier+Prime&display=swap');
 
 @theme {
@@ -11,14 +12,14 @@
   /* Light mode */
   --color-paper: #faf8f4;
   --color-ink: #1a1814;
-  --color-ink-muted: #6b6760;
-  --color-ink-faint: #c4bfb8;
+  --color-ink-muted: #4a4845;
+  --color-ink-faint: #8a8784;
 
   /* Dark mode */
   --color-paper-dark: #0f0e0c;
   --color-ink-dark: #e8e4dc;
-  --color-ink-dark-muted: #908c84;
-  --color-ink-dark-faint: #3a3830;
+  --color-ink-dark-muted: #b0aca4;
+  --color-ink-dark-faint: #6a6764;
 }
 
 @layer base {
